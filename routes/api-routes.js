@@ -1,0 +1,41 @@
+
+const db = require("../models");
+const vision = require('@google-cloud/vision')({
+  projectId: '3044e1b02e1804e67502cd943c6cf51f9f13d92b',
+  keyFilename: './googleServiceAccount.json'
+});
+
+
+module.exports = (app) => {
+  app.post('/upload', (req, res) => {
+    if (!req.files) {
+      return res.status(400).send('No files were uploaded.');
+    } else {
+
+      let sampleFile = req.files.sampleFile;
+      let fileName = req.files.sampleFile.name;
+
+      sampleFile.mv(`./images/${fileName}.jpg`, (err) => {
+        if (err) {
+          return res.status(500).send(err);
+        } else {
+            let filePath = `./images/${fileName}.jpg`;
+
+            const request = {
+              source: {
+                filename: filePath
+              }
+            };
+
+            vision.textDetection(request).then(response => {
+              console.log(response[0].textAnnotations[0].description);
+            }).catch(err => {
+              console.error(err);
+            });
+
+            res.send('File uploaded!');
+        }
+      })
+    }
+  });
+};

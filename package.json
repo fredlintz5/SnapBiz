@@ -1,0 +1,27 @@
+{
+  "name": "snapbiz",
+  "version": "1.0.0",
+  "description": "WebApp for uploading business card images and saving contact info",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredlintz5/SnapBiz.git"
+  },
+  "author": "Ash Rotman && Fred Lintz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fredlintz5/SnapBiz/issues"
+  },
+  "homepage": "https://github.com/fredlintz5/SnapBiz#readme",
+  "dependencies": {
+    "@google-cloud/vision": "^0.12.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "mysql2": "^1.4.2",
+    "sequelize": "^4.19.0"
+  }
+}
