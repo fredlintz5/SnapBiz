@@ -33,8 +33,13 @@ module.exports = (app) => {
       password: req.body.pass,
       phone: req.body.phone,
     })
-    .then(result => res.send(result));
-  })
+    .then(result => res.json(result.id))
+    .catch((err) => {
+      if (err.errors[0].path) {
+        res.send('email');
+      }
+    });
+  });
 
 
   app.post('/upload', (req, res) => {

@@ -18,7 +18,8 @@ $('#loginSubmit').on('click', function(event) {
 		if (result === 'noUserFound') {
 			alert('User Not found, please check email and password, or sign up as a New User');
 		} else {
-			window.location = '/user';
+			console.log(result);
+			window.location = `/user/${result}`;
 		}
 	})
 })
@@ -50,7 +51,11 @@ $('#loginSignUp').on('click', function(event) {
 		data: newUser,
 	})
 	.done(function(result) {
-		window.location = '/user';
+		if (result === 'email') {
+			alert('Please check email format and submit again');
+		} else {
+			window.location = `/user/${result}`;
+		}
 	})
 })
 

@@ -6,7 +6,7 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, "../public/html/index.html"));
   });
 
-  app.get('/user', (req,res) => {
+  app.get('/user/:id', (req,res) => {
     res.sendFile(path.join(__dirname, "../public/html/profile.html"));
   });
 };
