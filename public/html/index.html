@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Test Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Snap Biz - LogIn</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
 </head>
+
 <body>
-	<form ref='uploadForm' 
-      id='uploadForm' 
-      action='/upload' 
-      method='post' 
-      encType="multipart/form-data">
-        <input type="file"  accept="image/*" capture="environment" name="sampleFile" />
-        <input type='submit' value='Upload!' />
-    </form> 
-	</body>
+    <div class="container">
+      <form class="form-signin">
+        <h3 class="form-signin-heading">Please sign in</h3>
+        <input type="text" id="inputName" class="form-control hide" placeholder="Name" autofocus="">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" autofocus="">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" autofocus="">
+        <input type="phone" id="inputPhone" class="form-control hide" placeholder="Phone" autofocus="">
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="loginSubmit">Sign in</button>
+        <button class="btn btn-lg btn-success btn-block" type="submit" id="loginNewUser">New User</button>
+        <button class="btn btn-lg btn-success btn-block hide" type="submit" id="loginSignUp">Sign Up</button>
+      </form>
+    </div> 
+
+    <script src="../js/index.js"></script>
+</body>
 </html>
+
+
+
+

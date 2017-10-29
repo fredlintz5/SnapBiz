@@ -7,6 +7,36 @@ const vision = require('@google-cloud/vision')({
 
 
 module.exports = (app) => {
+
+  app.post('/verify', (req,res) => {
+    db.User.findOne({
+      where: {
+        email: req.body.email,
+        password: req.body.pass
+      }
+    })
+      .then((result) => {
+        if (result == null) {
+          console.log('no identified user')
+          res.send("noUserFound")
+        } else {
+          res.json(result.id);
+        }
+      })
+      .catch(err => console.log(err));
+  })
+
+  app.post('/newUser', (req, res) => {
+    db.User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.pass,
+      phone: req.body.phone,
+    })
+    .then(result => res.send(result));
+  })
+
+
   app.post('/upload', (req, res) => {
     if (!req.files) {
       return res.status(400).send('No files were uploaded.');
