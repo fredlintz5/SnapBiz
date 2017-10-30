@@ -1,4 +1,5 @@
 
+const path = require("path");
 const db = require("../models");
 const vision = require('@google-cloud/vision')({
   projectId: '3044e1b02e1804e67502cd943c6cf51f9f13d92b',
@@ -64,7 +65,7 @@ module.exports = (app) => {
             vision.textDetection(request)
               .then(response => {
                 console.log(response[0].textAnnotations[0].description);
-                res.send('File uploaded!');
+                res.json(response[0].textAnnotations[0].description);
             }).catch(err => console.error(err));
         }
       })

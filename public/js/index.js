@@ -30,6 +30,8 @@ $('#loginSubmit').on('click', function(event) {
 				$('#inputPassword').attr('placeholder', 'Password');
 			},2000)
 		} else {
+			sessionStorage.verify = true;
+			sessionStorage.user = result;
 			window.location = `/user/${result}`;
 		}
 	})
@@ -74,6 +76,8 @@ $('#loginSignUp').on('click', function(event) {
 				$('#inputEmail').toggleClass('warning');
 				$('#inputEmail').attr('placeholder', 'Check Email Format, and try again');
 			} else {
+				sessionStorage.verify = true;
+				sessionStorage.user = result;
 				window.location = `/user/${result}`;
 			}
 		})
