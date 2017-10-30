@@ -17,7 +17,6 @@ module.exports = (app) => {
     })
       .then((result) => {
         if (result == null) {
-          console.log('no identified user')
           res.send("noUserFound")
         } else {
           res.json(result.id);
@@ -50,11 +49,11 @@ module.exports = (app) => {
       let sampleFile = req.files.sampleFile;
       let fileName = req.files.sampleFile.name;
 
-      sampleFile.mv(`./images/${fileName}.jpg`, (err) => {
+      sampleFile.mv(`./images/${fileName}`, (err) => {
         if (err) {
           return res.status(500).send(err);
         } else {
-            let filePath = `./images/${fileName}.jpg`;
+            let filePath = `./images/${fileName}`;
 
             const request = {
               source: {
@@ -62,13 +61,11 @@ module.exports = (app) => {
               }
             };
 
-            vision.textDetection(request).then(response => {
-              console.log(response[0].textAnnotations[0].description);
-            }).catch(err => {
-              console.error(err);
-            });
-
-            res.send('File uploaded!');
+            vision.textDetection(request)
+              .then(response => {
+                console.log(response[0].textAnnotations[0].description);
+                res.send('File uploaded!');
+            }).catch(err => console.error(err));
         }
       })
     }

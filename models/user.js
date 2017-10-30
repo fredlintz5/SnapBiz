@@ -12,12 +12,9 @@ module.exports = (sequelize, DataTypes) => {
 	},
 	password: {
 		type: DataTypes.STRING,
-		len: [1]
-	},
-	phone: {
-		type: DataTypes.STRING,
-		len: [1]
-	},
+		len: [1],
+		allowNull: false
+	}
   });
 
   User.associate = (models) => {

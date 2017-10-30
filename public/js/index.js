@@ -15,10 +15,21 @@ $('#loginSubmit').on('click', function(event) {
 		data: credentials,
 	})
 	.done(function(result) {
+		$('#inputEmail').val("");
+		$('#inputPassword').val("");
+
 		if (result === 'noUserFound') {
-			alert('User Not found, please check email and password, or sign up as a New User');
+			$('#inputEmail').toggleClass('warning');
+			$('#inputPassword').toggleClass('warning');
+			$('#inputEmail').attr('placeholder', 'User Not found');
+			$('#inputPassword').attr('placeholder', 'Try again, or sign up as new user!');
+			setTimeout(function(){
+				$('#inputEmail').toggleClass('warning');
+				$('#inputPassword').toggleClass('warning');
+				$('#inputEmail').attr('placeholder', 'Email');
+				$('#inputPassword').attr('placeholder', 'Password');
+			},2000)
 		} else {
-			console.log(result);
 			window.location = `/user/${result}`;
 		}
 	})
@@ -28,7 +39,6 @@ $('#loginSubmit').on('click', function(event) {
 $('#loginNewUser').on('click', function(event) {
 	event.preventDefault();
 	$('#inputName').toggleClass('hide');
-	$('#inputPhone').toggleClass('hide');
 	$('#loginSubmit').toggleClass('hide');
 	$('#loginNewUser').toggleClass('hide');
 	$('#loginSignUp').toggleClass('hide');
@@ -38,25 +48,36 @@ $('#loginNewUser').on('click', function(event) {
 $('#loginSignUp').on('click', function(event) {
 	event.preventDefault();
 
-	let newUser = {
-		name: $('#inputName').val().trim(),
-		email: $('#inputEmail').val().trim(),
-		pass: $('#inputPassword').val().trim(),
-		phone: $('#inputPhone').val().trim()
-	};
+	if ($('#inputName').val() === "") {
+		$('#inputName').toggleClass('warning');
+	} else if ($('#inputEmail').val() === "") {
+		$('#inputName').toggleClass('warning');
+		$('#inputEmail').toggleClass('warning');
+	} else if ($('#inputPassword').val() === "") {
+		$('#inputEmail').toggleClass('warning');
+		$('#inputPassword').toggleClass('warning');
+	} else {
 
-	$.ajax({
-		url: '/newUser',
-		type: 'POST',
-		data: newUser,
-	})
-	.done(function(result) {
-		if (result === 'email') {
-			alert('Please check email format and submit again');
-		} else {
-			window.location = `/user/${result}`;
-		}
-	})
+		let newUser = {
+			name: $('#inputName').val().trim(),
+			email: $('#inputEmail').val().trim(),
+			pass: $('#inputPassword').val().trim(),
+		};
+
+		$.ajax({
+			url: '/newUser',
+			type: 'POST',
+			data: newUser,
+		})
+		.done(function(result) {
+			if (result === 'email') {
+				$('#inputEmail').toggleClass('warning');
+				$('#inputEmail').attr('placeholder', 'Check Email Format, and try again');
+			} else {
+				window.location = `/user/${result}`;
+			}
+		})
+	}
 })
 
 
