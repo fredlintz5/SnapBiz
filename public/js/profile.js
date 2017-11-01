@@ -10,4 +10,14 @@ if (!sessionStorage.verify || sessionStorage.user !== userVerify) {
 
 $(document).ready(function() {
 	
+
+
+
+
+
+
+
+
+
+	
 });

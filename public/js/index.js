@@ -1,4 +1,6 @@
-
+$('#clickMe').click(() => {
+	$('#loginModal').modal('toggle');
+});
 
 
 $('#loginSubmit').on('click', function(event) {

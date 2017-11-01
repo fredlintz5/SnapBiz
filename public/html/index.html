@@ -13,29 +13,50 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-          <form class="form-signin">
-            <h3>Welcome to SnapBiz</h3>
-            <h4>Please sign in</h4>
-            <input type="text" id="inputName" class="form-control hide" placeholder="Name" autofocus="">
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" autofocus="">
-            <br>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" id="loginSubmit">Sign in</button>
-            <button class="btn btn-lg btn-success btn-block" type="submit" id="loginNewUser">New User</button>
-            <button class="btn btn-lg btn-success btn-block hide" type="submit" id="loginSignUp">Sign Up</button>
-            <br>
-            <i>"Turn that pile of business cards into your very own database of prospective clients."</i>
-            <p> -Ash Rotman: CEO SnapBiz</p>
-            <br>
-            <i>"Not only am I the owner of SnapBiz Inc, I'm also a member..."</i>
-            <p> -Ash Rotman: CEO SnapBiz</p>
-            <br>
-            <i>"SnapBiz changed my life. I used to be a scrub with no money and no friends. Now I'm a successful entreprenuer and I own my own yacht!"</i>
-            <p> -Fred Lintz: Devoted Member</p>
-          </form>
+    <div class="container-fluid">
+
+
+        <!-- Lets Add main 'jumbotron' here with background image -'yadda,yadda,yadda' -->
+
+        <button class="btn btn-primary" id="clickMe">Login</button>
+
+
+        <!-- <i>"Turn that pile of business cards into your very own database of prospective clients."</i>
+        <p> -Ash Rotman: CEO SnapBiz</p>
+        <br>
+        <i>"Not only am I the owner of SnapBiz Inc, I'm also a member..."</i>
+        <p> -Ash Rotman: CEO SnapBiz</p>
+        <br>
+        <i>"SnapBiz changed my life. I used to be a scrub with no money and no friends. Now I'm a successful entreprenuer and I own my own yacht!"</i>
+        <p> -Fred Lintz: Devoted Member</p> -->
+
+        <!-- End main Jumbotron -->
+    
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Welcome to SnapBiz</h3>
+                    <h4>Please sign in</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="inputName" class="form-control hide" placeholder="Name" autofocus="">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" autofocus="">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" autofocus="">
+                    <br>
+                    <button class="btn btn-lg btn-primary btn-block" id="loginSubmit">Sign in</button>
+                    <button class="btn btn-lg btn-success btn-block" id="loginNewUser">New User</button>
+                    <button class="btn btn-lg btn-success btn-block hide" id="loginSignUp">Sign Up</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+          </div>
         </div>
+          
     </div> 
 
     <script src="../js/index.js"></script>
