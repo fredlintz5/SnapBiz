@@ -14,8 +14,6 @@
 </head>
 <body>
 
-    
-
     <div class="container-fluid">
       <nav class="navbar" style="background-color: #f1f1f1;">
         <h2 id="welcomeUser"></h2>
@@ -23,8 +21,7 @@
       <div class="row">
         <div class="col-sm-4">
         <!-- mobile view stuff goes here -->
-
-
+          
           <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
             <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
             <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
@@ -42,7 +39,12 @@
             <div class="col-sm-10">
               
               <!-- desktop view stuff will go here -->
-
+              <div class="dynamicTable"> 
+                <h3>Previous Prospects</h3>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/350x150"></a>
+              </div>
+              <button class="btn btn-primary" id="clickMe">Export</button>
+              <button class="btn btn-primary" id="clickMe">Delete</button>
 
                     <!-- MVP -->
               <!-- Table with pre-populated prospects -->

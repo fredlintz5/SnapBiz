@@ -31,9 +31,19 @@ body {
   background: none;
 }
 
+.jumbotron .container {
+position: relative;
+top: 130px;
+}
+
+#sampleFile {
+  opacity: 0;
+}
+
 .logo {
   z-index: -1;
   position: absolute;
-  padding-left: 300px;
+  padding-left: 335px;
   padding-bottom: 400px;
+  top: 132px;
  }
