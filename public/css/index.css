@@ -29,7 +29,10 @@ body {
 
 .jumbotron {
   background: none;
-  
+}
+
+#sampleFile {
+  opacity: 0;
 }
 
 .logo {

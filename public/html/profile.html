@@ -34,15 +34,13 @@
 
         <!-- 'Welcome {UserName}' -->
         <div id="welcomeUser"></div>
-          <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
-            <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
-            <input id="uploadImageButton" type='submit' value='Submit'/>
-          </form>
 
-       <!--  <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
+        <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
+          <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
           <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
-          <input id="uploadImageButton" type='submit' value='Submit'/>
-        </form>  -->
+        </form> 
+
+        <div id="dynamicForm"></div>
 
 
         <!-- Auto generated input fields with corresponding data from card -->
