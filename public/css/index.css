@@ -31,12 +31,8 @@ body {
   background: none;
 }
 
-#sampleFile {
-  opacity: 0;
-}
-
 .logo {
-  z-index: 2;
+  z-index: -1;
   position: absolute;
   padding-left: 300px;
   padding-bottom: 400px;

@@ -14,49 +14,26 @@
 </head>
 <body>
 
-    <nav class="navbar" style="background-color: #f1f1f1;">
-      <h2 class="userHere"></h2>
-    </nav>
+    
 
     <div class="container-fluid">
-
+      <nav class="navbar" style="background-color: #f1f1f1;">
+        <h2 id="welcomeUser"></h2>
+      </nav>
       <div class="row">
         <div class="col-sm-4">
         <!-- mobile view stuff goes here -->
 
-          
-            
-            
 
+          <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
+            <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
+            <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
+          </form> 
 
+          <div id="dynamicForm">
+            <!-- Auto generated input fields with corresponding data from card -->
           </div>
-
-
-        <!-- 'Welcome {UserName}' -->
-        <div id="welcomeUser"></div>
-
-        <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
-          <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
-          <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
-        </form> 
-
-        <div id="dynamicForm"></div>
-
-
-        <!-- Auto generated input fields with corresponding data from card -->
-                <!-- <div class="options"></div>   -->
-                  <!-- <option value="delete"></option>
-                  <option value="Name"></option>
-                  <option value="Title"></option>
-                  <option value="Company"></option>
-                  <option value="Email"></option>
-                  <option value="MobilePhone"></option>
-                  <option value="WorkPhone"></option>
-                  <option value="Address"></option>
-                  <option value="City"></option>
-                  <option value="State"></option>
-                  <option value="Zip"></option> -->
-                <!-- <div class="input"></div> -->
+        
         
         </div>
         <div class="col-sm-8 hide">

@@ -43,7 +43,6 @@ module.exports = (app) => {
 
 
   app.post('/upload', (req, res) => {
-    console.log(req.files);
     if (!req.files) {
       return res.status(400).send('No files were uploaded.');
     } else {
@@ -57,16 +56,16 @@ module.exports = (app) => {
         } else {
             let filePath = `./images/${fileName}`;
 
-            let request = {
-              source: {
-                filename: filePath
-              }
-            };
+            let request = {source: {filename: filePath }};
 
             vision.textDetection(request)
               .then(response => {
                 res.json(response[0].textAnnotations[0].description);
-                fs.unlink(filePath);
+                fs.unlink(filePath, (err) => {
+                  if (err) {
+                    console.log(err)
+                  }
+                });
             }).catch(err => console.error(err));
         }
       })

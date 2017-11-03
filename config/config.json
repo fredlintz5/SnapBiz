@@ -1,8 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "Fighter840",
-    "database": "Snapbiz_db",
+    "password": "root",
+    "port": 8889,
+    "database": "SnapBiz_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
