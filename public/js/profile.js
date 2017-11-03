@@ -44,6 +44,11 @@ $(document).ready(function() {
 	});
 
 
+	$('#formSubmit').on('click', function() {
+
+	})
+
+
 function renderInputs(string) {
 	let stringArray = string.split('\n');
 	num = 1;
@@ -75,8 +80,6 @@ function renderInputs(string) {
 
 	$('#dynamicForm').append(`<button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
 }
-
-renderInputs();
 
 
 
