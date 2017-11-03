@@ -74,7 +74,7 @@ function renderInputs(string) {
 	$('#dynamicForm').append(`<button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
 }
 
-
+renderInputs();
 
 
 
