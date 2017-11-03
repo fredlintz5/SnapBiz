@@ -41,6 +41,12 @@ module.exports = (app) => {
     });
   });
 
+  app.post('/user/:id/newProspect', (req, res) => {
+    db.Prospect.create(req.body)
+    .then(result => res.send("success"))
+    .catch((err) => res.send("error"));
+  });
+
 
   app.post('/upload', (req, res) => {
     if (!req.files) {
