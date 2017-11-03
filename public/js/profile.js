@@ -25,16 +25,18 @@ $(document).ready(function() {
 
 	$('#sampleFile').on('change', function(event) {
 
+		$('#dynamicForm').empty();
+
 		var form = new FormData();
 		form.append('sampleFile', $(this)[0].files[0]); 
 
 		$.ajax({
-		        url: '/upload',
-		        method: "POST",
-		        dataType: 'json',
-		        data: form,
-		        processData: false,
-		        contentType: false
+	        url: '/upload',
+	        method: "POST",
+	        dataType: 'json',
+	        data: form,
+	        processData: false,
+	        contentType: false
 		})
 		.done(function(result) {
 			renderInputs(result);
