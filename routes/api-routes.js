@@ -1,4 +1,4 @@
-
+const fs = require('fs');
 const path = require("path");
 const db = require("../models");
 const vision = require('@google-cloud/vision')({
@@ -43,6 +43,7 @@ module.exports = (app) => {
 
 
   app.post('/upload', (req, res) => {
+    console.log(req.files);
     if (!req.files) {
       return res.status(400).send('No files were uploaded.');
     } else {
@@ -56,7 +57,7 @@ module.exports = (app) => {
         } else {
             let filePath = `./images/${fileName}`;
 
-            const request = {
+            let request = {
               source: {
                 filename: filePath
               }
@@ -64,8 +65,8 @@ module.exports = (app) => {
 
             vision.textDetection(request)
               .then(response => {
-                console.log(response[0].textAnnotations[0].description);
                 res.json(response[0].textAnnotations[0].description);
+                fs.unlink(filePath);
             }).catch(err => console.error(err));
         }
       })

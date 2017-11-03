@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="../css/style.css" rel="stylesheet">
   <script src="../js/profile.js"></script>
+  <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
@@ -22,15 +22,12 @@
         <!-- 'Welcome {UserName}' -->
         <div id="welcomeUser"></div>
 
-        <!-- <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+        <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
+          <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
           <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
-          <input id="uploadImageButton" type='submit' value='Submit'/>
-        </form> -->
+        </form> 
 
-        <!-- <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
-          <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
-          <input id="uploadImageButton" type='submit' value='Submit'/>
-        </form>  -->
+        <div id="dynamicForm"></div>
 
 
         <!-- Auto generated input fields with corresponding data from card -->
