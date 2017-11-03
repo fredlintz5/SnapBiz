@@ -6,6 +6,7 @@ body {
   background-image: url(../background/main-bg.jpg);
   background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .warning {
@@ -34,10 +35,9 @@ body {
   opacity: 0;
 }
 
-
-
-
-
-
-
-
+.logo {
+  z-index: 2;
+  position: absolute;
+  padding-left: 300px;
+  padding-bottom: 400px;
+ }
