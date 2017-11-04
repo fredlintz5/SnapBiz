@@ -1,25 +1,21 @@
-
+$(window).resize(function() {
+	if ($(window).width() <= 450) {
+		$('#logo').addClass('hide');
+	} else {
+		$('#logo').removeClass('hide');
+	}
+});
 
 // $(window).resize(function() {
 
-//   if ($(this).width() <= 450) {
-
-//     $('.logo').hide();
-
+//   if ($(window).width() <= 600) {
+// 	// $(".display_3").text("Welcome to SnapBiz");
+//     $('#logo').addClass('hide');
 //   } else {
-
-//     $('.logo').show();
-
-//     }
-// $(window).resize(function() {
-// 	if ($(window).width() <= 450) {
-// 		$(".display_3").text("Welcome to SnapBiz");
-// 	} else {
-// 		$(".display-3").text("Welcome to ");
-// 	}
-
-// });
-
+//   	// $(".display-3").text("Welcome to ");
+//     $('#logo').removeClass('hide');
+//   }
+// }
 
 $('#clickMe').click(() => {
 	$('#loginModal').modal('toggle');
