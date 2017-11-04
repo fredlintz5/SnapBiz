@@ -11,17 +11,26 @@ $(document).ready(function() {
 
 	if ($(window).width() <= 450) {
 		$("#fileLabel").text("Take a Pic of Business Card");
+		$('#desktopView').addClass('hide');
 	} else {
 		$("#fileLabel").text("Upload Business Card Image");
+		$('#desktopView').removeClass('hide');
 	}
 
 	$(window).resize(function() {
 		if ($(window).width() <= 450) {
 			$("#fileLabel").text("Take a Pic of Business Card");
+			$('#desktopView').addClass('hide');
 		} else {
 			$("#fileLabel").text("Upload Business Card Image");
+			$('#desktopView').removeClass('hide');
 		}
 	});
+
+	getUserName();
+	
+	getTableData();
+	
 	
 
 	// once file is uploaded send to google vision api for deciphering
@@ -44,8 +53,20 @@ $(document).ready(function() {
 		})
 	});
 
+	$('#deleteButt').on('click', function() {
 
-	// Submit card button: input response grab
+		$.ajax({
+			url: 'user/:id/deleteProspect',
+			type: 'POST',
+			data: {param1: 'value1'},
+		})
+		.done(function() {
+			console.log("success");
+		})	
+	});
+
+
+	// Submit business-card button & grab text from card
 	$('#dynamicForm').on('click', 'button', function() {
 
 		let newProspect = {UserId: sessionStorage.user};
@@ -97,7 +118,6 @@ $(document).ready(function() {
 		}
 		
 		if (document.getElementsByClassName("nameExists")[0]) {
-			console.log(newProspect);
 			$.ajax({
 				url: `/user/${userId}/newProspect`,
 				type: 'POST',
@@ -107,6 +127,8 @@ $(document).ready(function() {
 				if (response === "success") {
 					$('#dynamicForm').empty();
 					$('#dynamicForm').html('<p>Succesful Database Upload</p>');
+					$('#tbody').empty();
+					getTableData();
 				} else {
 					$('#dynamicForm').empty();
 					$('#dynamicForm').html('<p>Database Upload Failed! Try again.</p>');
@@ -148,6 +170,35 @@ function renderInputs(string) {
 	$('#dynamicForm').append(`<button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
 }
 
+
+function getTableData() {
+	$.ajax({
+	url: `/user/${sessionStorage.user}/mostRecentProspects`,
+	type: 'GET',
+	})
+	.done(function(result) {
+		for (var i = 0; i < 10; i++) {
+			let newRow = 
+				`<tr>
+					<td>${result[i].id}</td>
+			        <td>${result[i].firstName}</td>
+			        <td>${result[i].lastName}</td>
+                    <td>${result[i].title}</td>
+                    <td>${result[i].company}</td>
+                    <td>${result[i].email}</td>
+                    <td>${result[i].mobile}</td>
+                    <td>${result[i].work}</td>
+				</tr>`;
+		$('#tbody').append(newRow);result[i]
+		}
+	});
+}
+
+function getUserName() {
+	$.get(`/user/${sessionStorage.user}/info`, function(data) {
+		$('#welcomeUser').text(`Welcome ${data.name}`);
+	});
+}
 
 
 });
