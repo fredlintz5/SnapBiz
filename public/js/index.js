@@ -12,7 +12,7 @@ $('#loginSubmit').on('click', function(event) {
 	};
 
 	$.ajax({
-		url: '/verify',
+		url: '/verifyUser',
 		type: 'POST',
 		data: credentials,
 	})
@@ -65,7 +65,7 @@ $('#loginSignUp').on('click', function(event) {
 		let newUser = {
 			name: $('#inputName').val().trim(),
 			email: $('#inputEmail').val().trim(),
-			pass: $('#inputPassword').val().trim(),
+			password: $('#inputPassword').val().trim(),
 		};
 
 		$.ajax({

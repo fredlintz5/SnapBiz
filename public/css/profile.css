@@ -2,6 +2,10 @@ body {
 	background-color: #f1f1f1 !important;
 }
 
+td, td {
+	width: 12.5%;
+}
+
 #sampleFile {
 	opacity: 0;
 }
