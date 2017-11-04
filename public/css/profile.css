@@ -5,3 +5,17 @@ body {
 #sampleFile {
 	opacity: 0;
 }
+
+#deskTop {
+	padding-left: 200px;
+}
+
+h3 {
+	font-family: inherit;
+	font-weight: 500;
+}
+
+#delete {
+	margin-left: 225px;
+	
+}
