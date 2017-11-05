@@ -6,6 +6,65 @@ if (!sessionStorage.verify || sessionStorage.user !== userVerify) {
 	window.location = '/';
 } 
 
+function renderInputs(string) {
+	let stringArray = string.split('\n');
+	let num = 1;
+
+	stringArray.forEach(function(item) {
+		let newFormGroup = 
+			`<div class="form-group">
+				<select id='fgSelect${num}'>
+					<option value="null">Select a Value</option>
+					<option value="delete">Delete Input</option>
+					<option value="name">Name</option>
+					<option value="title">Title</option>
+					<option value="company">Company</option>
+					<option value="email">Email</option>
+					<option value="mobilePhone">Mobile Phone</option>
+					<option value="workPhone">Work Phone</option>
+					<option value="address">Address</option>
+					<option value="city">City</option>
+					<option value="state">State</option>
+					<option value="zip">Zip</option>
+				</select>
+				<input type="text" class="form-control" id='fgInput${num}' value='${item}'>
+			</div>`;
+		$('#dynamicForm').append(newFormGroup);
+		num++;
+	});
+	$('#dynamicForm').append(`<br><button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
+}
+
+
+function getTableData() {
+	$.ajax({
+	url: `/user/${sessionStorage.user}/mostRecentProspects`,
+	type: 'GET',
+	})
+	.done(function(result) {
+		for (var i = 0; i < result.length; i++) {
+			let newRow = 
+				`<tr>
+					<td>${result[i].id}</td>
+			        <td>${result[i].firstName}</td>
+			        <td>${result[i].lastName}</td>
+                    <td>${result[i].title}</td>
+                    <td>${result[i].company}</td>
+                    <td>${result[i].email}</td>
+                    <td>${result[i].mobile}</td>
+                    <td>${result[i].work}</td>
+				</tr>`;
+		$('#tbody').append(newRow);
+		}
+	});
+}
+
+function getUserName() {
+	$.get(`/user/${sessionStorage.user}/info`, function(data) {
+		$('#welcomeUser').text(`Welcome ${data.name}`);
+	});
+}
+
 
 $(document).ready(function() {
 
@@ -27,10 +86,10 @@ $(document).ready(function() {
 		}
 	});
 
-	getUserName();
-	
+
+	// on page load populate User Name, and table data
+	getUserName();	
 	getTableData();
-	
 	
 
 	// once file is uploaded send to google vision api for deciphering
@@ -52,62 +111,6 @@ $(document).ready(function() {
 			renderInputs(result);
 		})
 	});
-	
-
-	$('#exportButt').on(click, function() {
-		con.connect(function(err) {
-			if (err) throw err;
-			con.query("SELECT * FROM prospects", 
-				INTO OUTFILE file_name, 
-				FIELDS TERMINATED BY ',', 
-				ENCLOSED BY '"', 
-				LINES TERMINATED BY '\n' 
-			function (err, result, fields) {
-				if (err) throw err;
-				console.log(result);
-			});
-		});
-	}
-
-
-	$('#deleteButt').on('click', function() {
-		$('#input-group').toggleClass('hide');
-		$('#deleteButt').toggleClass('hide');
-	});
-
-	$('#cancelDelete').on('click', function() {
-		$('#input-group').toggleClass('hide');
-		$('#deleteButt').toggleClass('hide');
-	});
-
-	$('#confirmDelete').on('click', function() {
-		let input = parseInt($('#deleteProspect').val().trim());
-
-		if (input != input) {
-			$('#deleteProspect').css('border-color', 'red');
-			$('#deleteProspect').val('');
-			$('#deleteProspect').attr('placeholder', 'Please only use Integers');
-		} else {
-			$.ajax({
-				url: '/user/:id/deleteProspect',
-				type: 'DELETE',
-				data: {id: input},
-			})
-			.done(function(result) {
-				if (result === 'success') {
-					$('#tbody').empty();
-					$('#deleteProspect').val('');
-					$('#input-group').toggleClass('hide');
-					$('#deleteButt').toggleClass('hide');
-					getTableData();
-				} else {
-					alert('Incorrect Id submitted, try again');
-				}
-			})
-		}
-	});
-
-
 
 
 	// Submit business-card button & grab text from card
@@ -183,66 +186,5 @@ $(document).ready(function() {
 			alert("Name Value cannot be null");
 		}
 	})
-
-
-function renderInputs(string) {
-	let stringArray = string.split('\n');
-	num = 1;
-
-	stringArray.forEach(function(item) {
-		let newFormGroup = 
-			`<div class="form-group">
-				<select id='fgSelect${num}'>
-					<option value="null">Select a Value</option>
-					<option value="delete">Delete Input</option>
-					<option value="name">Name</option>
-					<option value="title">Title</option>
-					<option value="company">Company</option>
-					<option value="email">Email</option>
-					<option value="mobilePhone">Mobile Phone</option>
-					<option value="workPhone">Work Phone</option>
-					<option value="address">Address</option>
-					<option value="city">City</option>
-					<option value="state">State</option>
-					<option value="zip">Zip</option>
-				</select>
-				<input type="text" class="form-control" id='fgInput${num}' value='${item}'>
-			</div>`;
-		$('#dynamicForm').append(newFormGroup);
-		num++;
-	});
-	$('#dynamicForm').append(`<br><button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
-}
-
-
-function getTableData() {
-	$.ajax({
-	url: `/user/${sessionStorage.user}/mostRecentProspects`,
-	type: 'GET',
-	})
-	.done(function(result) {
-		for (var i = 0; i < 10; i++) {
-			let newRow = 
-				`<tr>
-					<td>${result[i].id}</td>
-			        <td>${result[i].firstName}</td>
-			        <td>${result[i].lastName}</td>
-                    <td>${result[i].title}</td>
-                    <td>${result[i].company}</td>
-                    <td>${result[i].email}</td>
-                    <td>${result[i].mobile}</td>
-                    <td>${result[i].work}</td>
-				</tr>`;
-		$('#tbody').append(newRow);result[i]
-		}
-	});
-}
-
-function getUserName() {
-	$.get(`/user/${sessionStorage.user}/info`, function(data) {
-		$('#welcomeUser').text(`Welcome ${data.name}`);
-	});
-}
-
 
 });

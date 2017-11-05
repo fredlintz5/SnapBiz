@@ -16,6 +16,18 @@ module.exports = (app) => {
     })
   })
 
+  app.get('/api/prospect/:id', (req,res) => {
+    db.Prospect.findById(req.params.id)
+    .then((result) => {
+      if (result == null) {
+        res.send("noUserFound")
+      } else {
+        res.json(result);
+      }
+    })
+    .catch(err => console.log(err));
+  })
+
   app.get('/user/:id/info', (req,res) => {
     db.User.findById(req.params.id)
     .then((result) => {
@@ -69,6 +81,17 @@ module.exports = (app) => {
     .catch((err) => res.send("error"));
   })
 
+  app.put('/user/:id/updateProspect', (req,res) => {
+    db.Prospect.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(result => res.json(result))
+      .catch((err) => res.send("error"));
+  })
   
 };
 
