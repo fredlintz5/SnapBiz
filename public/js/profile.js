@@ -53,6 +53,22 @@ $(document).ready(function() {
 		})
 	});
 
+		$('#exportButt').on(click, function() {
+		con.connect(function(err) {
+		  if (err) throw err;
+		  con.query("SELECT * FROM prospects", 
+		  	INTO OUTFILE file_name, 
+		  	FIELDS TERMINATED BY ',', 
+		  	ENCLOSED BY '"', 
+		  	LINES TERMINATED BY '\n' 
+		  	function (err, result, fields) {
+		    if (err) throw err;
+		    console.log(result);
+		  });
+		});
+	}
+
+
 	$('#deleteButt').on('click', function() {
 		$('#input-group').toggleClass('hide');
 		$('#deleteButt').toggleClass('hide');
