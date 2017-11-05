@@ -27,7 +27,6 @@ module.exports = (app) => {
       if (result == null) {
         res.send("noUserFound")
       } else {
-        console.log(result);
         res.json(result);
       }
     })
