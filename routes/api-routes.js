@@ -16,12 +16,18 @@ module.exports = (app) => {
     })
   })
 
-  app.get('/api/prospect/:id', (req,res) => {
-    db.Prospect.findById(req.params.id)
+  app.get('/api/:userID/:prospectID', (req,res) => {
+    db.Prospect.findAll({
+      where: {
+        id: req.params.prospectID,
+        UserId: req.params.userID
+      }
+    })
     .then((result) => {
       if (result == null) {
         res.send("noUserFound")
       } else {
+        console.log(result);
         res.json(result);
       }
     })
