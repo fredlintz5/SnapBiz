@@ -3,7 +3,7 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
   height: 100%;
-  background-image: url(../background/main-bg.jpg);
+  background-image: url(../images/main-bg.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -36,10 +36,6 @@ position: relative;
 top: 130px;
 }
 
-#sampleFile {
-  opacity: 0;
-}
-
 .logo {
   z-index: -1;
   position: absolute;
@@ -47,3 +43,13 @@ top: 130px;
   padding-bottom: 400px;
   top: 132px;
 }
+
+#sampleFile {
+  opacity: 0;
+}
+
+
+
+
+
+

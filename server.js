@@ -12,13 +12,12 @@
 // limitations under the License.
 
 
-
 const fileUpload = require('express-fileupload'); 
 const bodyParser = require('body-parser');
-const express = require('express');
-const db = require("./models");
-const app = express();
-const port = 8080;
+const express    = require('express');
+const db         = require("./models");
+const app        = express();
+const port       = process.env.PORT || 8080;
 
 
 app.use(fileUpload());

@@ -61,5 +61,17 @@ module.exports = (app) => {
     .catch((err) => res.send("error"));
   });
 
+  app.delete('/user/:id/deleteProspect', (req,res) => {
+    db.Prospect.destroy({
+      where: {id: req.body.id}
+    })
+    .then(result => res.send("success"))
+    .catch((err) => res.send("error"));
+  })
+
   
 };
+
+
+
+
