@@ -1,20 +1,21 @@
 
-function getProspectData(id) {
+function getProspectData(userID, prospectID) {
 	$.ajax({
-		url: `/api/prospect/${id}`,
+		url: `/api/${userID}/${prospectID}`,
 		type: 'GET'
 	})
 	.done(function(result) {
+		console.log(result[0]);
 		let newRow = 
 			`<tr>
-				<td>${result.id}</td>
-		        <td>${result.firstName}</td>
-		        <td>${result.lastName}</td>
-	            <td>${result.title}</td>
-	            <td>${result.company}</td>
-	            <td>${result.email}</td>
-	            <td>${result.mobile}</td>
-	            <td>${result.work}</td>
+				<td>${result[0].id}</td>
+		        <td>${result[0].firstName}</td>
+		        <td>${result[0].lastName}</td>
+	            <td>${result[0].title}</td>
+	            <td>${result[0].company}</td>
+	            <td>${result[0].email}</td>
+	            <td>${result[0].mobile}</td>
+	            <td>${result[0].work}</td>
 			</tr>`;
 		
 		$('#tbody2').append(newRow);
@@ -79,6 +80,7 @@ $(document).ready(()=> {
 
 	$('#confirmUpdate').on('click', function() {
 		let ProspectId = parseInt($('#updateProspect').val().trim());
+		let UserId = sessionStorage.user;
 
 		if (ProspectId != ProspectId) {
 			$('#updateProspect').css('border-color', 'red');
@@ -89,7 +91,7 @@ $(document).ready(()=> {
 			$('#updateModal').modal('toggle');
 			$('#tbody2').empty();
 
-			getProspectData(ProspectId);
+			getProspectData(UserId, ProspectId);
 		
 			$('#reallyConfirmUpdate').on('click', function() {
 				let option = $('#updateOptions').val();
