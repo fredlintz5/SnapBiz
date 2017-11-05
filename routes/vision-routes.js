@@ -1,4 +1,5 @@
-const db = require("../models");
+const fs     = require('fs');
+const db     = require("../models");
 const vision = require('@google-cloud/vision')({
   projectId: '3044e1b02e1804e67502cd943c6cf51f9f13d92b',
   keyFilename: './googleServiceAccount.json'
@@ -15,11 +16,11 @@ app.post('/upload', (req, res) => {
       let sampleFile = req.files.sampleFile;
       let fileName = req.files.sampleFile.name;
 
-      sampleFile.mv(`./images/${fileName}`, (err) => {
+      sampleFile.mv(`./tempImage/${fileName}`, (err) => {
         if (err) {
           return res.status(500).send(err);
         } else {
-            let filePath = `./images/${fileName}`;
+            let filePath = `./tempImage/${fileName}`;
 
             let request = {source: {filename: filePath }};
 

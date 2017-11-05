@@ -54,16 +54,43 @@ $(document).ready(function() {
 	});
 
 	$('#deleteButt').on('click', function() {
-
-		$.ajax({
-			url: 'user/:id/deleteProspect',
-			type: 'POST',
-			data: {param1: 'value1'},
-		})
-		.done(function() {
-			console.log("success");
-		})	
+		$('#input-group').toggleClass('hide');
+		$('#deleteButt').toggleClass('hide');
 	});
+
+	$('#cancelDelete').on('click', function() {
+		$('#input-group').toggleClass('hide');
+		$('#deleteButt').toggleClass('hide');
+	});
+
+	$('#confirmDelete').on('click', function() {
+		let input = parseInt($('#deleteProspect').val().trim());
+
+		if (input != input) {
+			$('#deleteProspect').css('border-color', 'red');
+			$('#deleteProspect').val('');
+			$('#deleteProspect').attr('placeholder', 'Please only use Integers');
+		} else {
+			$.ajax({
+				url: '/user/:id/deleteProspect',
+				type: 'DELETE',
+				data: {id: input},
+			})
+			.done(function(result) {
+				if (result === 'success') {
+					$('#tbody').empty();
+					$('#deleteProspect').val('');
+					$('#input-group').toggleClass('hide');
+					$('#deleteButt').toggleClass('hide');
+					getTableData();
+				} else {
+					alert('Incorrect Id submitted, try again');
+				}
+			})
+		}
+	});
+
+
 
 
 	// Submit business-card button & grab text from card
@@ -126,12 +153,12 @@ $(document).ready(function() {
 			.done(function(response) {
 				if (response === "success") {
 					$('#dynamicForm').empty();
-					$('#dynamicForm').html('<p>Succesful Database Upload</p>');
+					$('#dynamicForm').html("<p class='text-center'>Successful Database Upload</p>");
 					$('#tbody').empty();
 					getTableData();
 				} else {
 					$('#dynamicForm').empty();
-					$('#dynamicForm').html('<p>Database Upload Failed! Try again.</p>');
+					$('#dynamicForm').html("<p class='text-center'>Database Upload Failed</p>");
 				}
 			})
 			
@@ -167,7 +194,7 @@ function renderInputs(string) {
 		$('#dynamicForm').append(newFormGroup);
 		num++;
 	});
-	$('#dynamicForm').append(`<button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
+	$('#dynamicForm').append(`<br><button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
 }
 
 

@@ -1,9 +1,19 @@
 body {
-	background-color: #f1f1f1 !important;
+	background-color: #f1f1f1;
 }
 
 td, td {
 	width: 12.5%;
+}
+
+h3 {
+	font-family: inherit;
+	font-weight: 500;
+}
+
+#dynamicTable {
+	height: 400px;
+	overflow: auto;
 }
 
 #sampleFile {
@@ -14,12 +24,13 @@ td, td {
 	padding-left: 200px;
 }
 
-h3 {
-	font-family: inherit;
-	font-weight: 500;
-}
-
 #delete {
 	margin-left: 225px;
-	
 }
+
+#spaceSaver {
+	opacity: 0;
+}
+
+
+

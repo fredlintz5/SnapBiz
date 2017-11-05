@@ -17,32 +17,32 @@
 <body>
 
     <div class="container-fluid">
-      <nav class="navbar">
-        <h2 id="welcomeUser"></h2>
-      </nav>
       <!-- mobile view -->
       <div class="row">
         <div class="col-sm-4">
+          <nav class="navbar text-center">
+            <h2 id="welcomeUser"></h2>
+          </nav>
           <div class="text-center">
-            <img src="../background/snapBiz_logo.png" width="250">
+            <img src="../images/snapBiz_logo.png" width="250">
           </div>
           <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
             <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
             <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
           </form> 
 
-          <div id="dynamicForm">
-            <!-- Auto generated input fields with corresponding data from card -->
-          </div>
-        
+          <!-- Auto generated input fields with corresponding data from card -->
+          <div id="dynamicForm"></div>
         
         </div>
         <div class="col-sm-8" id='desktopView'>
           <!-- desktop view -->
           <div class="row">
-            <!-- <div class="col-sm-1"></div> -->
             <div class="col-sm-12">
-              <div class="dynamicTable"> 
+              <nav class="navbar">
+                <h2 id="spaceSaver">Here's Some Random Text that will be hidden</h2>
+              </nav>
+              <div id="dynamicTable"> 
                 <h3>Current Prospects</h3>
                 <table class="table table-striped table-hover">
                   <thead>
@@ -57,13 +57,36 @@
                         <th>Work</th>                      
                       </tr>
                   </thead>
+                  <!-- Table is populated with user data from mySql on page load -->
                   <tbody id="tbody"></tbody>
-                </table>
-                
+                </table> 
               </div>
-              <button class="btn btn-success" id="exportButt">Export</button>
-              <button class="btn btn-danger" id="deleteButt">Delete</button>
-              <input class="form-control" id="deleteProspect" type="text" placeholder="Insert Id of Prospect to delete">
+                <!-- <div class="form-group">
+                  <div class="col-sm-3">
+                    <button class="btn btn-default" id="exportButt">Export</button>
+                    <button class="btn btn-default" id="deleteButt">Delete</button>
+                  </div>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="deleteProspect" type="text" placeholder="Insert Id of Prospect to delete">
+                  </div>
+                </div> -->
+                <div class="form-inline">
+                  <div class="form-group">
+                    <button class="form-control btn btn-default" id="exportButt">Export</button>
+                  </div>
+                  <div class="form-group">
+                    <button class="form-control btn btn-default" id="deleteButt">Delete</button>
+                  </div>
+                  <div class="input-group hide" id="input-group">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" id="cancelDelete">X</button>
+                    </span>
+                    <input type="text" class="form-control" id="deleteProspect" placeholder="Insert Id of Prospect">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" id="confirmDelete">Delete</button>
+                    </span>
+                  </div>
+                </div>
  
                     <!-- MVP -->
               <!-- Table with pre-populated prospects -->
