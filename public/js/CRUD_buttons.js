@@ -5,7 +5,6 @@ function getProspectData(userID, prospectID) {
 		type: 'GET'
 	})
 	.done(function(result) {
-		console.log(result[0]);
 		let newRow = 
 			`<tr>
 				<td>${result[0].id}</td>
