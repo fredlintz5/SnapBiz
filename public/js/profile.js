@@ -92,6 +92,13 @@ $(document).ready(function() {
 	getTableData();
 	
 
+	$('#profileLogout').on('click', function() {
+		sessionStorage.user = '';
+		sessionStorage.verify = '';
+
+		window.location.assign("/");
+	})
+
 	// once file is uploaded send to google vision api for deciphering
 	$('#sampleFile').on('change', function(event) {
 		$('#dynamicForm').empty();
