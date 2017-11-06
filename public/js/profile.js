@@ -63,7 +63,26 @@ function getTableData() {
 
 function getUserData() {
 	$.get(`/user/${sessionStorage.user}/info`, function(data) {
-		$('#welcomeUser').text(`${data.name}`);
+		let emailArray = data.email.split('');
+		let nameArray = data.name.split(''); 
+		// dynamically guessing left positon to center user data
+		let emailLeft = (300 - (emailArray.length * 5))*.6;
+		let nameLeft;
+
+		if (nameArray.length > 15) {
+			nameArray = data.name.split(' ');
+			let fName = nameArray[0].split('');
+			nameLeft = (300 - (fName.length * 10))*.573;
+			$('#welcomeUser').text(`${nameArray[0]}`);
+			$('#welcomeUser').css('left', `${nameLeft}px`);
+		} else {
+			nameLeft = (300 - (nameArray.length * 10))*.573;
+			$('#welcomeUser').text(`${data.name}`);
+			$('#welcomeUser').css('left', `${nameLeft}px`);
+		}
+
+		$('#email').text(`${data.email}`);
+		$('#email').css('left', `${emailLeft}px`);
 	});
 }
 
