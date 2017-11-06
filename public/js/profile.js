@@ -1,14 +1,16 @@
 // hacky user auth
 let userId = location.href.split('/');
-let userVerify = userId[userId.length - 1]
+let userVerify = userId[userId.length - 1];
 
 if (!sessionStorage.verify || sessionStorage.user !== userVerify) {
 	window.location = '/';
 } 
 
+let num;
+
 function renderInputs(string) {
 	let stringArray = string.split('\n');
-	let num = 1;
+	num = 1;
 
 	stringArray.forEach(function(item) {
 		let newFormGroup = 
@@ -115,6 +117,8 @@ $(document).ready(function() {
 	        contentType: false
 		})
 		.done(function(result) {
+			$('#dynamicCard').toggleClass('hide');
+			
 			renderInputs(result);
 		})
 	});
@@ -182,6 +186,7 @@ $(document).ready(function() {
 					$('#dynamicForm').empty();
 					$('#dynamicForm').html("<p class='text-center'>Successful Database Upload</p>");
 					$('#tbody').empty();
+					$('#dynamicCard').toggleClass('hide');
 					getTableData();
 				} else {
 					$('#dynamicForm').empty();

@@ -8,34 +8,38 @@ const vision = require('@google-cloud/vision')({
 
 module.exports = (app) => {
 
-app.post('/upload', (req, res) => {
-    if (!req.files) {
-      return res.status(400).send('No files were uploaded.');
-    } else {
+  app.post('/upload', (req, res) => {
+      if (!req.files) {
+        return res.status(400).send('No files were uploaded.');
+      } else {
 
-      let sampleFile = req.files.sampleFile;
-      let fileName = req.files.sampleFile.name;
+        let sampleFile = req.files.sampleFile;
+        let fileName = req.files.sampleFile.name;
 
-      sampleFile.mv(`./tempImage/${fileName}`, (err) => {
-        if (err) {
-          return res.status(500).send(err);
-        } else {
-            let filePath = `./tempImage/${fileName}`;
+        sampleFile.mv(`./public/images/${fileName}`, (err) => {
+          if (err) {
+            return res.status(500).send(err);
+          } else {
+              let filePath = `./public/images/${fileName}`;
 
-            let request = {source: {filename: filePath }};
+              let request = {source: {filename: filePath }};
 
-            vision.textDetection(request)
-              .then(response => {
-                res.json(response[0].textAnnotations[0].description);
-                fs.unlink(filePath, (err) => {
-                  if (err) {
-                    console.log(err)
-                  }
-                });
-            }).catch(err => console.error(err));
-        }
-      })
-    }
-  });
+              vision.textDetection(request)
+                .then(response => {
 
+                  res.json(response[0].textAnnotations[0].description);
+                  
+                  fs.unlink(filePath, (err) => {
+                    if (err) {
+                      console.log(err)
+                    }
+                  });
+              }).catch(err => console.error(err));
+          }
+        })
+      }
+    });
 }
+
+
+
