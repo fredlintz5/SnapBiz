@@ -39,9 +39,12 @@ top: 130px;
 .logo {
   z-index: -1;
   position: absolute;
-  padding-left: 335px;
+  padding-left: 280px;
   padding-bottom: 400px;
   top: 132px;
+}
+.smallLogo {
+  text-align: center;
 }
 
 #sampleFile {
@@ -50,6 +53,14 @@ top: 130px;
 
 
 
-
-
+@media (max-width : 465px) {
+  .largeScreen{display: none;}
+  .smallScreen{display: block;}
+  .logo{display: none;}
+  .container{text-align: center;}
+}
+@media (min-width: 466px) {
+  .largeScreen{display: block;}
+  .smallScreen{display: none;}
+}
 
