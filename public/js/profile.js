@@ -1,14 +1,16 @@
 // hacky user auth
 let userId = location.href.split('/');
-let userVerify = userId[userId.length - 1]
+let userVerify = userId[userId.length - 1];
 
 if (!sessionStorage.verify || sessionStorage.user !== userVerify) {
 	window.location = '/';
 } 
 
+let num;
+
 function renderInputs(string) {
 	let stringArray = string.split('\n');
-	let num = 1;
+	num = 1;
 
 	stringArray.forEach(function(item) {
 		let newFormGroup = 
@@ -59,9 +61,9 @@ function getTableData() {
 	});
 }
 
-function getUserName() {
+function getUserData() {
 	$.get(`/user/${sessionStorage.user}/info`, function(data) {
-		$('#welcomeUser').text(`Welcome ${data.name}`);
+		$('#welcomeUser').text(`${data.name}`);
 	});
 }
 
@@ -88,9 +90,16 @@ $(document).ready(function() {
 
 
 	// on page load populate User Name, and table data
-	getUserName();	
+	getUserData();	
 	getTableData();
 	
+
+	$('#profileLogout').on('click', function() {
+		sessionStorage.user = '';
+		sessionStorage.verify = '';
+
+		window.location.assign("/");
+	})
 
 	// once file is uploaded send to google vision api for deciphering
 	$('#sampleFile').on('change', function(event) {
@@ -108,6 +117,8 @@ $(document).ready(function() {
 	        contentType: false
 		})
 		.done(function(result) {
+			$('#dynamicCard').toggleClass('hide');
+			
 			renderInputs(result);
 		})
 	});
@@ -175,6 +186,7 @@ $(document).ready(function() {
 					$('#dynamicForm').empty();
 					$('#dynamicForm').html("<p class='text-center'>Successful Database Upload</p>");
 					$('#tbody').empty();
+					$('#dynamicCard').toggleClass('hide');
 					getTableData();
 				} else {
 					$('#dynamicForm').empty();

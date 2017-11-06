@@ -11,6 +11,80 @@ h3 {
 	font-weight: 500;
 }
 
+.font {
+	font-size: 12px;
+}
+
+#businessCard {
+	position: relative;
+	margin: auto;
+	height: 165px;
+	width: 300px;
+	background-color: white;
+	box-shadow: 2px 2px 3px grey;
+}
+
+#favicon {
+	position: absolute;
+	top: 31px;
+	left: -10px;
+}
+
+#welcomeUser {
+	position: absolute;
+	top: 18px;
+	left: 115px;	
+}
+
+#savvy {
+	position: absolute;
+	top: 63px;
+	left: 119px;
+}
+
+#businessCard hr {
+	position: relative;
+    border-color: #333;
+    margin-left: 83px;
+    margin-right: 20px;
+    top: 82px;
+}
+
+#cell {
+	position: absolute;
+	top: 85px;
+	left: 84px;
+}
+
+#work {
+	position: absolute;
+	top: 85px;
+	left: 186px;
+}
+
+#email {
+	position: absolute;
+	top: 100px;
+	left: 135px;
+}
+
+#address {
+	position: absolute;
+	top: 116px;
+	left: 100px;
+}
+
+#city {
+	position: absolute;
+	top: 129px;
+	left: 112px;
+}
+
+
+#profileLogout {
+	opacity: 1;
+}
+
 #dynamicTable {
 	height: 400px;
 	overflow: auto;
