@@ -1,174 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Snap Biz - Profile</title>
+    <title>Snap Biz - Profile</title>
 
-  <link rel="shortcut icon" href="../images/faviconPart2.png" type="image/x-icon">
-  <link rel="icon" href="../images/faviconPart2.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="../css/profile.css" rel="stylesheet">
-  <script src="../js/profile.js"></script>
-  <script src="../js/CRUD_buttons.js"></script>
+    <link rel="shortcut icon" href="../images/faviconPart2.png" type="image/x-icon">
+    <link rel="icon" href="../images/faviconPart2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../css/profile.css" rel="stylesheet">
+    <script src="../js/profile.js"></script>
+    <script src="../js/CRUD_buttons.js"></script>
 </head>
 <body>
-
     <div class="container-fluid">
-      <!-- mobile view -->
-      <div class="row">
-        <div class="col-sm-4">
-          <nav class="navbar text-center">
-            <h3></h3>
-          </nav>
-            <!-- <img src="../images/businessCard.jpg" class="businessCard"> -->
-          <div id="businessCard">
-            <img src="../images/faviconPart2.png" id="favicon">
-            <h3 id="welcomeUser">John Smith</h3>
-            <p class="font" id="savvy">Savvy Business Person</p>
-            <hr class="font" id="hr">
-            <span class="font" id="cell">C: 222.333.4444</span>
-            <span class="font" id="work">W: 333.444.5555</span>
-            <p class="font" id="email">ash@gmail.com</p>
-            <p class="font" id="address">1555 W Business Cr, Unit 3</p>
-            <p class="font" id="city">Some Town, CO 80111</p>
-          </div>
-          
-          <br>
-          <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
-            <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
-            <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
-          </form> 
-
-          <!-- Auto generated input fields with corresponding data from card -->
-          <div id="dynamicForm"></div>
-        
-        </div>
-        <div class="col-sm-8" id='desktopView'>
-          <!-- desktop view -->
-          <div class="row">
-            <div class="col-sm-12">
-              <br>
-              <div class="text-right">
-                  <button class="btn btn-default" id="profileLogout">Logout</button>
-              </div>
-              <br>
-              <div id="dynamicTable"> 
-                <table class="table table-striped table-hover">
-                  <thead>
-                      <tr>
-                        <th>Id</th>
-                        <th>F.Name</th>
-                        <th>L.Name</th>
-                        <th>Title</th>
-                        <th>Company</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>Work</th>                      
-                      </tr>
-                  </thead>
-                  <!-- Table is populated with user data from mySql on page load -->
-                  <tbody id="tbody"></tbody>
-                </table> 
-              </div>
-                <div class="form-inline">
-                  <div class="form-group">
-                    <button class="form-control btn btn-default" id="exportButt">Export</button>
-                  </div>
-                  <div class="form-group">
-                    <button class="form-control btn btn-default" id="deleteButt">Delete</button>
-                  </div>
-                  <div class="input-group hide" id="input-group">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" id="cancelDelete">X</button>
-                    </span>
-                    <input type="text" class="form-control" id="deleteProspect" placeholder="Insert Id of Prospect">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" id="confirmDelete">Delete</button>
-                    </span>
-                  </div>
-                  <div class="form-group">
-                    <button class="form-control btn btn-default" id="upButt">Update</button>
-                  </div>
-                  <div class="input-group hide" id="input-group2">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" id="cancelUpdate">X</button>
-                    </span>
-                    <input type="text" class="form-control" id="updateProspect" placeholder="Insert Id of Prospect">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" id="confirmUpdate">Update</button>
-                    </span>
-                  </div>
+        <!-- mobile view -->
+        <div class="row">
+            <div class="col-sm-4">
+                <br>
+                <br>
+                <br>
+                <div id="businessCard">
+                    <img src="../images/faviconPart2.png" id="favicon">
+                    <h3 id="welcomeUser">John Smith</h3>
+                    <p class="font" id="savvy">Savvy Business Person</p>
+                    <hr class="font" id="hr">
+                    <span class="font" id="cell">C: 222.333.4444</span>
+                    <span class="font" id="work">W: 333.444.5555</span>
+                    <p class="font" id="email">email@gmail.com</p>
+                    <p class="font" id="address">1555 W Business Cr, Unit 3</p>
+                    <p class="font" id="city">Some Town, CO 80111</p>
                 </div>
-
-                  <!-- Bonus Button-->
-              <!-- buttons for Changing Table View of Prospects -->
-
-              <!-- Update Prospect Modal -->
+                <br>
+                <form name='uploadForm' id='uploadForm' encType="multipart/form-data">
+                    <label class='btn btn-primary btn-block' id='fileLabel' for="sampleFile"></label>
+                    <input type="file"  accept="image/*" capture="environment" id="sampleFile" name="sampleFile"/>
+                </form> 
+                <!-- Auto generated input fields with corresponding data from card -->
+                <div id="dynamicForm"></div> 
+            </div>
+            <!-- desktop view -->
+            <div class="col-sm-8">
+                <br>
+                <div class="text-right">
+                    <button class="btn btn-default" id="profileLogout">Logout</button>
+                </div>
+                <br>
+                <div id="dynamicTable"> 
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>F.Name</th>
+                                <th>L.Name</th>
+                                <th>Title</th>
+                                <th>Company</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Work</th>                      
+                            </tr>
+                        </thead>
+                        <!-- Table is populated with user data from mySql on page load -->
+                        <tbody id="tbody"></tbody>
+                    </table> 
+                </div>
+                <!-- CRUD Buttons -->
+                <div class="form-inline">
+                    <div class="form-group">
+                        <button class="form-control btn btn-default" id="exportButt">Export</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="form-control btn btn-default" id="deleteButt">Delete</button>
+                    </div>
+                    <div class="input-group hide" id="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" id="cancelDelete">X</button>
+                        </span>
+                    <input type="text" class="form-control" id="deleteProspect" placeholder="Insert Id of Prospect">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" id="confirmDelete">Delete</button>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <button class="form-control btn btn-default" id="upButt">Update</button>
+                    </div>
+                    <div class="input-group hide" id="input-group2">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" id="cancelUpdate">X</button>
+                        </span>
+                    <input type="text" class="form-control" id="updateProspect" placeholder="Insert Id of Prospect">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" id="confirmUpdate">Update</button>
+                        </span>
+                    </div>
+                </div>
+                <!-- Update Prospect Modal -->
                 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Update Prospect</h3>
-                        </div>
-                        <div class="modal-body">
-                          <div id="ajaxProspect">
-                            <table class="table table-striped table-condensed">
-                              <thead>
-                                  <tr>
-                                    <th>Id</th>
-                                    <th>F.Name</th>
-                                    <th>L.Name</th>
-                                    <th>Title</th>
-                                    <th>Company</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Work</th>                      
-                                  </tr>
-                              </thead>
-                              <!-- Table is populated with user data from mySql -->
-                              <tbody id="tbody2"></tbody>
-                            </table> 
-                          </div>
-                          <div class="form-group">
-                            <select id='updateOptions'>
-                              <option value="null">Select a Value to Update</option>
-                              <option value="firstName">First Name</option>
-                              <option value="lastName">Last Name</option>
-                              <option value="title">Title</option>
-                              <option value="company">Company</option>
-                              <option value="email">Email</option>
-                              <option value="mobilePhone">Mobile Phone</option>
-                              <option value="workPhone">Work Phone</option>
-                              <option value="address">Address</option>
-                              <option value="city">City</option>
-                              <option value="state">State</option>
-                              <option value="zip">Zip</option>
-                            </select>
-                            <div class="input-group">
-                              <input type="text" class="form-control" id="updateInput">
-                              <span class="input-group-btn">
-                                <button class="btn btn-default" id="reallyConfirmUpdate">Update</button>
-                              </span>
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Update Prospect</h3>
                             </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <div class="modal-body">
+                                <div id="ajaxProspect">
+                                    <table class="table table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>F.Name</th>
+                                                <th>L.Name</th>
+                                                <th>Title</th>
+                                                <th>Company</th>
+                                                <th>Email</th>
+                                                <th>Mobile</th>
+                                                <th>Work</th>                      
+                                            </tr>
+                                        </thead>
+                                        <!-- Table is populated with user data from mySql -->
+                                        <tbody id="tbody2"></tbody>
+                                    </table> 
+                                </div>
+                                <div class="form-group">
+                                    <select id='updateOptions'>
+                                        <option value="null">Select a Value to Update</option>
+                                        <option value="firstName">First Name</option>
+                                        <option value="lastName">Last Name</option>
+                                        <option value="title">Title</option>
+                                        <option value="company">Company</option>
+                                        <option value="email">Email</option>
+                                        <option value="mobilePhone">Mobile Phone</option>
+                                        <option value="workPhone">Work Phone</option>
+                                        <option value="address">Address</option>
+                                        <option value="city">City</option>
+                                        <option value="state">State</option>
+                                        <option value="zip">Zip</option>
+                                    </select>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="updateInput">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" id="reallyConfirmUpdate">Update</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 </body>
 </html>

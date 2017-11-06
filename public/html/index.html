@@ -15,42 +15,21 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-
-
-        <!-- Lets Add main 'jumbotron' here with background image -'yadda,yadda,yadda' -->
+    <div class="container-fluid" id="homePage">
         <div class="jumbotron">
-          <div class="container">
-            <div class="largeScreen">
-                <h1 class="display-3">Welcome to</h1>
-                <p class="lead">Simplifying your prospecting</p>
+            <div class="largeScreen text-left">
+                <img src="../images/snapBiz_logo_largeScreen.png">
+                <button class="btn btn-primary" id="clickMeLarge">Login</button>
+                <p id="prospectingLarge">Simplifying your prospecting</p>
             </div>
-            <div class="smallScreen">
-                <div class="smallLogo">
-                <img src="../images/snapBiz_logo.png" width="250">
+            <div class="smallScreen text-center">
+                <img src="../images/snapBiz_logo_darkGrey.png" width="350">
+                <button class="btn btn-primary" id="clickMeSmall">Login</button>
+                <p id="prospectingSmall">Simplifying your prospecting</p>
             </div>
-          </div>
-            <button class="btn btn-primary" id="clickMe">Login</button>
+            
         </div>
-        <div class="logo">
-            <img src="../images/snapBiz_logo.png"> 
-        </div>
-
-       
-                    <!-- this stuff not neccesary, but maybe carousel??? -->
-                    
-        <!-- <i>"Turn that pile of business cards into your very own database of prospective clients."</i>
-        <p> -Ash Rotman: CEO SnapBiz</p>
-        <br>
-        <i>"Not only am I the owner of SnapBiz Inc, I'm also a member..."</i>
-        <p> -Ash Rotman: CEO SnapBiz</p>
-        <br>
-        <i>"SnapBiz changed my life. I used to be a scrub with no money and no friends. Now I'm a successful entreprenuer and I own my own yacht!"</i>
-        <p> -Fred Lintz: Devoted Member</p> -->
-
-
-        <!-- End main Jumbotron -->
-    
+        <!-- Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">

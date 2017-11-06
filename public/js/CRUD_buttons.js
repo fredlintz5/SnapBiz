@@ -45,7 +45,7 @@ $(document).ready(()=> {
 			$('#deleteProspect').attr('placeholder', 'Please only use Integers');
 		} else {
 			$.ajax({
-				url: '/user/:id/deleteProspect',
+				url: `/user/${sessionStorage.user}/deleteProspect`,
 				type: 'DELETE',
 				data: {id: input},
 			})
