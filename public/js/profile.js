@@ -61,9 +61,9 @@ function getTableData() {
 	});
 }
 
-function getUserName() {
+function getUserData() {
 	$.get(`/user/${sessionStorage.user}/info`, function(data) {
-		$('#welcomeUser').text(`Welcome ${data.name}`);
+		$('#welcomeUser').text(`${data.name}`);
 	});
 }
 
@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 
 	// on page load populate User Name, and table data
-	getUserName();	
+	getUserData();	
 	getTableData();
 	
 
