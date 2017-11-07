@@ -1,6 +1,50 @@
 const fs = require('fs');
 const path = require("path");
 const db = require("../models");
+const faker = require('faker');
+
+//faker used to create dummy data for CSV function
+// let count = 30;
+
+// while( count-- ) {
+//   db.User.create({
+//     name: faker.name.firstName(),
+//     email: faker.internet.email(),
+//     password: faker.internet.password()
+//   }).then(user => {
+//     db.Prospect.create({
+//       UserId: user.id,
+//       firstName: faker.name.firstName(),
+//       lastName: faker.name.lastName(),
+//       title: faker.name.jobTitle(),
+//       company: faker.company.companyName(),
+//       email: faker.internet.email(),
+//       mobile: faker.phone.phoneNumber(),
+//       work: faker.phone.phoneNumber(),
+//       address: faker.address.streetAddress(),
+//       city: faker.address.city(),
+//       state: faker.address.state(),
+//       zip: faker.address.zipCode()
+//     })
+//   });
+// }
+
+// while ( count-- ) {
+//   db.Prospect.create({
+//     UserId: count,
+//     firstName: faker.name.firstName(),
+//     lastName: faker.name.lastName(),
+//     title: faker.name.jobTitle(),
+//     company: faker.company.companyName(),
+//     email: faker.internet.email(),
+//     mobile: faker.phone.phoneNumber(),
+//     work: faker.phone.phoneNumber(),
+//     address: faker.address.streetAddress(),
+//     city: faker.address.city(),
+//     state: faker.address.state(),
+//     zip: faker.address.zipCode()
+//   })
+// }
 
 
 module.exports = (app) => {

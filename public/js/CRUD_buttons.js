@@ -21,6 +21,45 @@ function getProspectData(userID, prospectID) {
 	});
 }
 
+//function to create CSV
+function createCSV (file_name, fields, data) {
+  fields.push('\n');
+  fs.appendFile('./' + file_name + '.csv', fields.join(';'), function (err) {
+    if ( err ) return console.log(err);
+
+    data.forEach(function(row) {
+      var values = Object.values(row.dataValues);
+      values.push('\n');
+
+      fs.appendFile('./' + file_name + '.csv', values.join(';'), function (err) {
+        if ( err ) return console.log(err);
+      })
+    })
+  });
+}
+
+const attributes = [
+  'firstName', 
+  'lastName', 
+  'title', 
+  'company', 
+  'email', 
+  'mobile', 
+  'work', 
+  'address',
+  'city',
+  'state',
+  'zip'
+];
+
+db.prospects
+  .findAll({
+    attributes: attributes
+  })
+  .then(prospects => {
+    createCSV('prospects', attributes, prospects);
+  });
+
 
 $(document).ready(()=> {
 
