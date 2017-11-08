@@ -1,3 +1,4 @@
+let ProspectId;
 
 function getProspectData(userID, prospectID) {
 	$.ajax({
@@ -101,7 +102,7 @@ $(document).ready(()=> {
 
 
 	$('#confirmUpdate').on('click', function() {
-		let ProspectId = parseInt($('#updateProspect').val().trim());
+		ProspectId = parseInt($('#updateProspect').val().trim());
 		let UserId = sessionStorage.user;
 
 		if (ProspectId != ProspectId) {
@@ -114,8 +115,10 @@ $(document).ready(()=> {
 			$('#tbody2').empty();
 
 			getProspectData(UserId, ProspectId);
-		
-			$('#reallyConfirmUpdate').on('click', function() {
+		}
+	});
+
+	$('#reallyConfirmUpdate').on('click', function() {
 				let option = $('#updateOptions').val();
 				let input = $('#updateInput').val();
 				let newProspect = {};
@@ -190,8 +193,6 @@ $(document).ready(()=> {
 					getTableData();
 				})
 			})
-		}
-	});
 
 });
 
