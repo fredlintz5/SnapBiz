@@ -2,50 +2,7 @@ const fs = require('fs');
 const path = require("path");
 const db = require("../models");
 const faker = require('faker');
-
-//faker used to create dummy data for CSV function
-// let count = 30;
-
-// while( count-- ) {
-//   db.User.create({
-//     name: faker.name.firstName(),
-//     email: faker.internet.email(),
-//     password: faker.internet.password()
-//   }).then(user => {
-//     db.Prospect.create({
-//       UserId: user.id,
-//       firstName: faker.name.firstName(),
-//       lastName: faker.name.lastName(),
-//       title: faker.name.jobTitle(),
-//       company: faker.company.companyName(),
-//       email: faker.internet.email(),
-//       mobile: faker.phone.phoneNumber(),
-//       work: faker.phone.phoneNumber(),
-//       address: faker.address.streetAddress(),
-//       city: faker.address.city(),
-//       state: faker.address.state(),
-//       zip: faker.address.zipCode()
-//     })
-//   });
-// }
-
-// while ( count-- ) {
-//   db.Prospect.create({
-//     UserId: count,
-//     firstName: faker.name.firstName(),
-//     lastName: faker.name.lastName(),
-//     title: faker.name.jobTitle(),
-//     company: faker.company.companyName(),
-//     email: faker.internet.email(),
-//     mobile: faker.phone.phoneNumber(),
-//     work: faker.phone.phoneNumber(),
-//     address: faker.address.streetAddress(),
-//     city: faker.address.city(),
-//     state: faker.address.state(),
-//     zip: faker.address.zipCode()
-//   })
-// }
-
+var json2csv = require('json2csv');
 
 module.exports = (app) => {
 
@@ -57,6 +14,29 @@ module.exports = (app) => {
     })
     .then((result) => {
       res.json(result);
+    })
+  })
+
+  app.get('/user/:id/exportProspects', (req,res) => {
+    db.Prospect.findAll({
+      where: {UserId: req.params.id},
+      order: [['createdAt', 'DESC']]
+    })
+    .then((result) => {
+      var fields = 
+      ['firstName', 'lastName', 'title', 'company', 'email', 'mobile',  'work', 'address', 'city', 'state', 'zip'];
+      var opts = {
+        data: result,
+        fields: fields,
+        
+      };
+      var csv = json2csv(opts);
+       
+      fs.writeFile('public/file.csv', csv, function(err) {
+        if (err) throw err;
+        console.log('file saved');
+      });
+      res.send('success');
     })
   })
 

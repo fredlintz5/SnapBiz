@@ -21,47 +21,31 @@ function getProspectData(userID, prospectID) {
 	});
 }
 
-//function to create CSV
-function createCSV (file_name, fields, data) {
-  fields.push('\n');
-  fs.appendFile('./' + file_name + '.csv', fields.join(';'), function (err) {
-    if ( err ) return console.log(err);
-
-    data.forEach(function(row) {
-      var values = Object.values(row.dataValues);
-      values.push('\n');
-
-      fs.appendFile('./' + file_name + '.csv', values.join(';'), function (err) {
-        if ( err ) return console.log(err);
-      })
-    })
-  });
-}
-
-const attributes = [
-  'firstName', 
-  'lastName', 
-  'title', 
-  'company', 
-  'email', 
-  'mobile', 
-  'work', 
-  'address',
-  'city',
-  'state',
-  'zip'
-];
-
-db.prospects
-  .findAll({
-    attributes: attributes
-  })
-  .then(prospects => {
-    createCSV('prospects', attributes, prospects);
-  });
-
 
 $(document).ready(()=> {
+
+	$('#exportButt').on('click', function() {
+		console.log('fartz');
+		$.ajax({
+			url: `/user/${sessionStorage.user}/exportProspects`,
+			type: 'GET',
+			})
+			.done(function(result) {
+				if (result === 'success') {
+				console.log(result);
+    
+				    function downloadCSV(fileUrl) {
+				    	console.log(fileUrl);
+				        $('#hiddenAnchor').attr('href', `../${fileUrl}`);
+				        $('#hiddenAnchor').attr('download', `../${fileUrl}`);
+				        $('#hiddenAnchor')[0].click();
+
+				    }
+				    downloadCSV('file.csv');
+				} 
+
+			});
+	})
 
 	$('#deleteButt').on('click', function() {
 			$('#input-group').toggleClass('hide');
