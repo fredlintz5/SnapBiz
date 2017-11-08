@@ -21,6 +21,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
+    "faker": "^4.1.0",
+    "json2csv": "^3.11.5",
     "mysql": "^2.15.0",
     "mysql2": "^1.4.2",
     "sequelize": "^4.19.0"
