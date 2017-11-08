@@ -24,6 +24,29 @@ function getProspectData(userID, prospectID) {
 
 $(document).ready(()=> {
 
+	$('#exportButt').on('click', function() {
+		console.log('fartz');
+		$.ajax({
+			url: `/user/${sessionStorage.user}/exportProspects`,
+			type: 'GET',
+			})
+			.done(function(result) {
+				if (result === 'success') {
+				console.log(result);
+    
+				    function downloadCSV(fileUrl) {
+				    	console.log(fileUrl);
+				        $('#hiddenAnchor').attr('href', `../${fileUrl}`);
+				        $('#hiddenAnchor').attr('download', `../${fileUrl}`);
+				        $('#hiddenAnchor')[0].click();
+
+				    }
+				    downloadCSV('file.csv');
+				} 
+
+			});
+	})
+
 	$('#deleteButt').on('click', function() {
 			$('#input-group').toggleClass('hide');
 			$('#deleteButt').toggleClass('hide');
