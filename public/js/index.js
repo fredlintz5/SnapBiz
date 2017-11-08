@@ -2,10 +2,17 @@
 
 $('#clickMeSmall').click(() => {
 	$('#loginModal').modal('toggle');
+	setTimeout(function (){
+        $('#inputEmail').focus();
+    }, 800);
 });
+
 
 $('#clickMeLarge').click(() => {
 	$('#loginModal').modal('toggle');
+	setTimeout(function (){
+        $('#inputEmail').focus();
+    }, 800);
 });
 
 

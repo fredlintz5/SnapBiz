@@ -92,18 +92,22 @@ $(document).ready(function() {
 	if ($(window).width() <= 450) {
 		$("#fileLabel").text("Take a Pic of Business Card");
 		$('#desktopView').addClass('hide');
+		$('#profileLogoutMobile').removeClass('hide');
 	} else {
 		$("#fileLabel").text("Upload Business Card Image");
 		$('#desktopView').removeClass('hide');
+		$('#profileLogoutMobile').addClass('hide');
 	}
 
 	$(window).resize(function() {
 		if ($(window).width() <= 450) {
 			$("#fileLabel").text("Take a Pic of Business Card");
 			$('#desktopView').addClass('hide');
+			$('#profileLogoutMobile').removeClass('hide');
 		} else {
 			$("#fileLabel").text("Upload Business Card Image");
 			$('#desktopView').removeClass('hide');
+			$('#profileLogoutMobile').addClass('hide');
 		}
 	});
 
@@ -113,7 +117,13 @@ $(document).ready(function() {
 	getTableData();
 	
 
-	$('#profileLogout').on('click', function() {
+	$('#profileLogoutDesktop').on('click', function() {
+		sessionStorage.user = '';
+		sessionStorage.verify = '';
+		window.location.assign("/");
+	})
+
+	$('#profileLogoutMobile').on('click', function() {
 		sessionStorage.user = '';
 		sessionStorage.verify = '';
 		window.location.assign("/");
