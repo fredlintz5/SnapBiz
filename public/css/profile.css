@@ -78,11 +78,6 @@ h3 {
 	left: 112px;
 }
 
-
-#profileLogout {
-	opacity: 1;
-}
-
 #dynamicTable {
 	height: 400px;
 	overflow: auto;
@@ -92,17 +87,7 @@ h3 {
 	opacity: 0;
 }
 
-#deskTop {
-	padding-left: 200px;
-}
 
-#delete {
-	margin-left: 225px;
-}
-
-#spaceSaver {
-	opacity: 0;
-}
 
 
 

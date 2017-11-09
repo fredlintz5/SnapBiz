@@ -34,7 +34,7 @@ function renderInputs(string) {
 		$('#dynamicForm').append(newFormGroup);
 		num++;
 	});
-	$('#dynamicForm').append(`<br><button type="button" id="formSubmit" class="btn btn-default">Submit</button>`);
+	$('#dynamicForm').append(`<button type="button" id="formSubmit" class="btn btn-default">Submit</button><br>`);
 }
 
 
@@ -92,18 +92,22 @@ $(document).ready(function() {
 	if ($(window).width() <= 450) {
 		$("#fileLabel").text("Take a Pic of Business Card");
 		$('#desktopView').addClass('hide');
+		$('#profileLogoutMobile').removeClass('hide');
 	} else {
 		$("#fileLabel").text("Upload Business Card Image");
 		$('#desktopView').removeClass('hide');
+		$('#profileLogoutMobile').addClass('hide');
 	}
 
 	$(window).resize(function() {
 		if ($(window).width() <= 450) {
 			$("#fileLabel").text("Take a Pic of Business Card");
 			$('#desktopView').addClass('hide');
+			$('#profileLogoutMobile').removeClass('hide');
 		} else {
 			$("#fileLabel").text("Upload Business Card Image");
 			$('#desktopView').removeClass('hide');
+			$('#profileLogoutMobile').addClass('hide');
 		}
 	});
 
@@ -113,12 +117,18 @@ $(document).ready(function() {
 	getTableData();
 	
 
-	$('#profileLogout').on('click', function() {
+	$('#profileLogoutDesktop').on('click', function() {
 		sessionStorage.user = '';
 		sessionStorage.verify = '';
-
 		window.location.assign("/");
 	})
+
+	$('#profileLogoutMobile').on('click', function() {
+		sessionStorage.user = '';
+		sessionStorage.verify = '';
+		window.location.assign("/");
+	})
+
 
 	// once file is uploaded send to google vision api for deciphering
 	$('#sampleFile').on('change', function(event) {
@@ -149,9 +159,10 @@ $(document).ready(function() {
 		let newProspect = {UserId: sessionStorage.user};
 
 		for (var i = 1; i < num; i++) {
-			let ans = $(`#fgSelect${i}`).val().trim();
+			let option = $(`#fgSelect${i}`).val().trim();
+			let input = $(`#fgInput${i}`).val().trim();
 
-			switch (ans) {
+			switch (option) {
 				case 'null': 
 					$(`#fgSelect${i}`).css('border-color', 'red');
 					break;
@@ -159,37 +170,37 @@ $(document).ready(function() {
 					break;
 				case 'name': 
 					$(`#fgInput${i}`).addClass('nameExists');
-					let fullName = $(`#fgInput${i}`).val().trim();
+					let fullName = input;
 					let nameArray = fullName.split(" ");
 					newProspect.firstName = nameArray[0];
 					newProspect.lastName = nameArray[1];
 					break;
 				case 'title': 
-					newProspect.title = $(`#fgInput${i}`).val().trim();
+					newProspect.title = input;
 					break;
 				case 'company': 
-					newProspect.company = $(`#fgInput${i}`).val().trim();
+					newProspect.company = input;
 					break;
 				case 'email': 
-					newProspect.email = $(`#fgInput${i}`).val().trim();
+					newProspect.email = input;
 					break;
 				case 'mobilePhone': 
-					newProspect.mobile = $(`#fgInput${i}`).val().trim();
+					newProspect.mobile = input;
 					break;
 				case 'workPhone': 
-					newProspect.work = $(`#fgInput${i}`).val().trim();	
+					newProspect.work = input;	
 					break;
 				case 'address': 
-					newProspect.address = $(`#fgInput${i}`).val().trim();	
+					newProspect.address = input;	
 					break;
 				case 'city': 
-					newProspect.city = $(`#fgInput${i}`).val().trim();	
+					newProspect.city = input;	
 					break;
 				case 'state': 
-					newProspect.state = $(`#fgInput${i}`).val().trim();	
+					newProspect.state = input;	
 					break;
 				case 'zip': 
-					newProspect.zip = $(`#fgInput${i}`).val().trim();
+					newProspect.zip = input;
 					break;
 			}
 		}

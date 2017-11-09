@@ -104,7 +104,10 @@ module.exports = (app) => {
 
   app.delete('/user/:id/deleteProspect', (req,res) => {
     db.Prospect.destroy({
-      where: {id: req.body.id}
+      where: {
+        id: req.body.id,
+        UserId: req.params.id
+      }
     })
     .then(result => res.send("success"))
     .catch((err) => res.send("error"));

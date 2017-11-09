@@ -1,3 +1,4 @@
+let ProspectId;
 
 function getProspectData(userID, prospectID) {
 	$.ajax({
@@ -25,32 +26,25 @@ function getProspectData(userID, prospectID) {
 $(document).ready(()=> {
 
 	$('#exportButt').on('click', function() {
-		console.log('fartz');
 		$.ajax({
 			url: `/user/${sessionStorage.user}/exportProspects`,
 			type: 'GET',
-			})
-			.done(function(result) {
-				if (result === 'success') {
-				console.log(result);
-    
-				    function downloadCSV(fileUrl) {
-				    	console.log(fileUrl);
-				        $('#hiddenAnchor').attr('href', `../${fileUrl}`);
-				        $('#hiddenAnchor').attr('download', `../${fileUrl}`);
-				        $('#hiddenAnchor')[0].click();
+		})
+		.done(function(result) {
+			if (result === 'success') {
 
-				    }
-				    downloadCSV('file.csv');
-				} 
-
-			});
+			    let fileUrl = 'file.csv';
+		        $('#hiddenAnchor').attr('href', `../${fileUrl}`);
+		        $('#hiddenAnchor').attr('download', `../${fileUrl}`);
+		        $('#hiddenAnchor')[0].click();
+			} 
+		});
 	})
 
 	$('#deleteButt').on('click', function() {
-			$('#input-group').toggleClass('hide');
-			$('#deleteButt').toggleClass('hide');
-		});
+		$('#input-group').toggleClass('hide');
+		$('#deleteButt').toggleClass('hide');
+	});
 
 
 	$('#cancelDelete').on('click', function() {
@@ -68,7 +62,7 @@ $(document).ready(()=> {
 			$('#deleteProspect').attr('placeholder', 'Please only use Integers');
 		} else {
 			$.ajax({
-				url: '/user/:id/deleteProspect',
+				url: `/user/${sessionStorage.user}/deleteProspect`,
 				type: 'DELETE',
 				data: {id: input},
 			})
@@ -78,8 +72,8 @@ $(document).ready(()=> {
 					$('#deleteProspect').val('');
 					$('#input-group').toggleClass('hide');
 					$('#deleteButt').toggleClass('hide');
-					// this function lives in profile.js
-					getTableData();
+					
+					getTableData();  // this function lives in profile.js
 				} else {
 					alert('Incorrect Id submitted, try again');
 				}
@@ -89,9 +83,9 @@ $(document).ready(()=> {
 
 
 	$('#upButt').on('click', function() {
-			$('#input-group2').toggleClass('hide');
-			$('#upButt').toggleClass('hide');
-		});
+		$('#input-group2').toggleClass('hide');
+		$('#upButt').toggleClass('hide');
+	});
 
 
 	$('#cancelUpdate').on('click', function() {
@@ -101,7 +95,7 @@ $(document).ready(()=> {
 
 
 	$('#confirmUpdate').on('click', function() {
-		let ProspectId = parseInt($('#updateProspect').val().trim());
+		ProspectId = parseInt($('#updateProspect').val().trim());
 		let UserId = sessionStorage.user;
 
 		if (ProspectId != ProspectId) {
@@ -114,84 +108,84 @@ $(document).ready(()=> {
 			$('#tbody2').empty();
 
 			getProspectData(UserId, ProspectId);
-		
-			$('#reallyConfirmUpdate').on('click', function() {
-				let option = $('#updateOptions').val();
-				let input = $('#updateInput').val();
-				let newProspect = {};
-
-				if (option === 'null') {
-					$('#updateOptions').css('border-color', 'red');
-
-					$('#updateOptions').on('change', function() {
-						$('#updateOptions').css('border-color', 'grey');
-						option = $('#updateOptions').val();
-					})
-				} else if (input === '') {
-					$('#updateInput').css('border-color', 'red');
-					$('#updateInput').attr('placeholder', 'Please Input update value here');
-
-					$('#updateInput').on('change', function() {
-						$('#updateInput').css('border-color', 'grey');
-						input = $('#updateInput').val();
-					})
-				}
-
-				switch (option) {
-					case 'firstName': 
-						newProspect.firstName = input;
-						break;
-					case 'lastName': 
-						newProspect.lastName = input;
-						break;
-					case 'title': 
-						newProspect.title = input;
-						break;
-					case 'company': 
-						newProspect.company = input;
-						break;
-					case 'email': 
-						newProspect.email = input;
-						break;
-					case 'mobilePhone': 
-						newProspect.mobile = input;
-						break;
-					case 'workPhone': 
-						newProspect.work = input;	
-						break;
-					case 'address': 
-						newProspect.address = input;	
-						break;
-					case 'city': 
-						newProspect.city = input;	
-						break;
-					case 'state': 
-						newProspect.state = input;	
-						break;
-					case 'zip': 
-						newProspect.zip = input;
-						break;
-				}
-
-				$.ajax({
-					url: `/user/${ProspectId}/updateProspect`,
-					type: 'PUT',
-					data: newProspect,
-				})
-				.done(function(result) {
-					$('#tbody2').empty();
-					$('#updateOptions').val('null');
-					$('#updateInput').val("");
-					$('#updateModal').modal('toggle');
-					$('#tbody').empty();
-					$('#updateProspect').val('');
-					$('#input-group2').toggleClass('hide');
-					$('#upButt').toggleClass('hide');
-					getTableData();
-				})
-			})
 		}
 	});
+
+	$('#reallyConfirmUpdate').on('click', function() {
+		let option = $('#updateOptions').val();
+		let input = $('#updateInput').val();
+		let newProspect = {};
+
+		if (option === 'null') {
+			$('#updateOptions').css('border-color', 'red');
+
+			$('#updateOptions').on('change', function() {
+				$('#updateOptions').css('border-color', 'grey');
+				option = $('#updateOptions').val();
+			})
+		} else if (input === '') {
+			$('#updateInput').css('border-color', 'red');
+			$('#updateInput').attr('placeholder', 'Please Input update value here');
+
+			$('#updateInput').on('change', function() {
+				$('#updateInput').css('border-color', 'grey');
+				input = $('#updateInput').val();
+			})
+		}
+
+		switch (option) {
+			case 'firstName': 
+				newProspect.firstName = input;
+				break;
+			case 'lastName': 
+				newProspect.lastName = input;
+				break;
+			case 'title': 
+				newProspect.title = input;
+				break;
+			case 'company': 
+				newProspect.company = input;
+				break;
+			case 'email': 
+				newProspect.email = input;
+				break;
+			case 'mobilePhone': 
+				newProspect.mobile = input;
+				break;
+			case 'workPhone': 
+				newProspect.work = input;	
+				break;
+			case 'address': 
+				newProspect.address = input;	
+				break;
+			case 'city': 
+				newProspect.city = input;	
+				break;
+			case 'state': 
+				newProspect.state = input;	
+				break;
+			case 'zip': 
+				newProspect.zip = input;
+				break;
+		}
+
+		$.ajax({
+			url: `/user/${ProspectId}/updateProspect`,
+			type: 'PUT',
+			data: newProspect,
+		})
+		.done(function(result) {
+			$('#tbody2').empty();
+			$('#updateOptions').val('null');
+			$('#updateInput').val("");
+			$('#updateModal').modal('toggle');
+			$('#tbody').empty();
+			$('#updateProspect').val('');
+			$('#input-group2').toggleClass('hide');
+			$('#upButt').toggleClass('hide');
+			getTableData();
+		})
+	})
 
 });
 
