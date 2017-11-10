@@ -2,13 +2,16 @@ const fs     = require('fs');
 const db     = require("../models");
 const vision = require('@google-cloud/vision')({
   projectId: '3044e1b02e1804e67502cd943c6cf51f9f13d92b',
-  keyFilename: './googleServiceAccount.json' || process.env.GOOGLE_CREDS 
+  // keyFilename: './googleServiceAccount.json'
+  keyFilename: JSON.parse(process.env.GOOGLE_CREDS)  
+
 });
 
 
 module.exports = (app) => {
 
   app.post('/upload', (req, res) => {
+      console.log(vision.keyFilename);
       if (!req.files) {
         return res.status(400).send('No files were uploaded.');
       } else {
