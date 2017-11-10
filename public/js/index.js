@@ -1,5 +1,5 @@
 
-
+// when login modal toggled, set user cursor to email field
 $('#clickMeSmall').click(() => {
 	$('#loginModal').modal('toggle');
 	setTimeout(function (){
@@ -7,7 +7,7 @@ $('#clickMeSmall').click(() => {
     }, 800);
 });
 
-
+// when login modal toggled, set user cursor to email field
 $('#clickMeLarge').click(() => {
 	$('#loginModal').modal('toggle');
 	setTimeout(function (){
