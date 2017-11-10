@@ -7,11 +7,13 @@ const vision = require('@google-cloud/vision')({
 
 });
 
+console.log(JSON.parse(process.env.GOOGLE_CREDS));
+
 
 module.exports = (app) => {
 
   app.post('/upload', (req, res) => {
-      console.log(vision.keyFilename);
+      console.log(JSON.parse(process.env.GOOGLE_CREDS));
       if (!req.files) {
         return res.status(400).send('No files were uploaded.');
       } else {
