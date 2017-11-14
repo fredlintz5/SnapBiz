@@ -3,6 +3,10 @@ const db     = require("../models");
 
 const vision = require('@google-cloud/vision')({
   projectId: '3044e1b02e1804e67502cd943c6cf51f9f13d92b',
+  // use this line to access google-vision locally
+  // keyFilename: './googleServiceAccount.json'
+  
+  // use this line to access google vision when deployed to heroku
   credentials: JSON.parse(process.env.GOOGLE_CREDS)  
 });
 
