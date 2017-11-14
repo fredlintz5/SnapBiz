@@ -40,8 +40,8 @@ function renderInputs(string) {
 
 function getTableData() {
 	$.ajax({
-	url: `/user/${sessionStorage.user}/mostRecentProspects`,
-	type: 'GET',
+		url: `/user/${sessionStorage.user}/mostRecentProspects`,
+		type: 'GET',
 	})
 	.done(function(result) {
 		for (var i = 0; i < result.length; i++) {
@@ -65,7 +65,7 @@ function getUserData() {
 	$.get(`/user/${sessionStorage.user}/info`, function(data) {
 		let emailArray = data.email.split('');
 		let nameArray = data.name.split(''); 
-		// dynamically guessing left positon to center user data
+		//Guessing left positon to center user data on dynamically generated Business Card
 		let emailLeft = (300 - (emailArray.length * 5))*.6;
 		let nameLeft;
 
