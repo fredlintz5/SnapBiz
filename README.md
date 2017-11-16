@@ -2,7 +2,7 @@
 > Mobile Responsive Web App for capturing business card images and turning the text into user data, which can be exported via csv into a CRM of the user's choosing.
 
 
-![](screenshot.png)
+![](screenShot.png)
 
 
 ## Usage example
