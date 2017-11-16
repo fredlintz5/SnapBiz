@@ -13,15 +13,16 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 
 
 
-## Meta
+## Authors
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Fred Lintz - (https://github.com/fredlintz5)
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+Ash Rotman - (https://github.com/AshRotman)
+
 
 ## Contributing
 
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
+1. Fork it (<https://github.com/fredlintz5/SnapBiz/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
