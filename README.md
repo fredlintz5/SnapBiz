@@ -15,9 +15,8 @@ _For more examples and usage, please refer to the [Wiki][wiki]._ -->
 
 ## Authors
 
-Fred Lintz - (https://github.com/fredlintz5)
-
-Ash Rotman - (https://github.com/AshRotman)
+- Fred Lintz - (https://github.com/fredlintz5)
+- Ash Rotman - (https://github.com/AshRotman)
 
 
 ## Contributing
