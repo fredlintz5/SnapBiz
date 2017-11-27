@@ -34,6 +34,8 @@
 }
 
 #homePage {
+  position: relative;
+  overflow: hidden;
   background-image: url(../images/main-bg.jpg);
   background-size: cover;
   background-position: center center;
